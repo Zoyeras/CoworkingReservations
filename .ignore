@@ -1,0 +1,20 @@
+# Build artifacts
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+**/out/
+
+# Test and coverage artifacts
+**/TestResults/
+coverage/
+
+# IDE metadata
+.idea/
+.vs/
+
+# Other generated directories
+artifacts/
+publish/
+packages/
+

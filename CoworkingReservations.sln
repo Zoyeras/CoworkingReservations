@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.Domain", "Coworking.Domain\Coworking.Domain.csproj", "{70E14964-5AB4-47C2-9DE6-41F40EFB1EDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.Aplication", "Coworking.Aplication\Coworking.Aplication.csproj", "{168E2FB8-031A-4A77-A9B0-D7E3EA743819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.Infrastructure", "Coworking.Infrastructure\Coworking.Infrastructure.csproj", "{A3592560-6705-47F5-ABA4-D7506460C06B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.API", "Coworking.API\Coworking.API.csproj", "{39767245-0CF3-41B0-A8C8-1A4F65577406}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70E14964-5AB4-47C2-9DE6-41F40EFB1EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70E14964-5AB4-47C2-9DE6-41F40EFB1EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70E14964-5AB4-47C2-9DE6-41F40EFB1EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70E14964-5AB4-47C2-9DE6-41F40EFB1EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168E2FB8-031A-4A77-A9B0-D7E3EA743819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168E2FB8-031A-4A77-A9B0-D7E3EA743819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168E2FB8-031A-4A77-A9B0-D7E3EA743819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168E2FB8-031A-4A77-A9B0-D7E3EA743819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3592560-6705-47F5-ABA4-D7506460C06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3592560-6705-47F5-ABA4-D7506460C06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3592560-6705-47F5-ABA4-D7506460C06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3592560-6705-47F5-ABA4-D7506460C06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39767245-0CF3-41B0-A8C8-1A4F65577406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39767245-0CF3-41B0-A8C8-1A4F65577406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39767245-0CF3-41B0-A8C8-1A4F65577406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39767245-0CF3-41B0-A8C8-1A4F65577406}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
