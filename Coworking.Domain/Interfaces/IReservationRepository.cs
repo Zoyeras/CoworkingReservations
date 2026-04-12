@@ -1,9 +1,9 @@
+using Coworking.Domain.Entities;
+
 namespace Coworking.Domain.Interfaces;
 
 public interface IReservationRepository
 {
-    public GetReservationById()
-    {
-        return Task<bool> IsRoomAvailableAsync(Guid roomId, DateTime start, DateTime end);
-    }
+    Task AddAsync(Reservation reservation);
+    Task<bool> IsRoomAvailableAsync(Guid roomId, DateTime start, DateTime end);
 }
