@@ -39,3 +39,4 @@ Thumbs.db
 appsettings.Local.json
 appsettings.*.local.json
 
+.aider*
