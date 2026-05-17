@@ -1,0 +1,51 @@
+
+`Npgsql` es el proveedor para PostgreSQL.  
+`Microsoft.EntityFrameworkCore.Design` es necesario para poder ejecutar comandos de migraciones desde la línea de comandos (dotnet ef).
+
+### Paso 2: Crear el DbContext
+
+Un `DbContext` es la clase principal que representa la base de datos.  
+Debes crear el archivo `Coworking.Infrastructure/Data/AppDbContext.cs` con:
+
+- Tres propiedades `DbSet` (una por entidad: `User`, `Room`, `Reservation`).
+- El constructor que recibe `DbContextOptions<AppDbContext>`.
+- El método `OnModelCreating` donde configurarás las tablas con Fluent API.
+
+Cuando lo crees me preguntas y te doy el código exacto.
+
+### Paso 3: Configurar las entidades con Fluent API
+
+Dentro del mismo `OnModelCreating` debes indicar:
+
+- Nombres de tablas (`ToTable`)
+- Claves primarias (`HasKey`)
+- Restricciones de columnas (longitud máxima, requerido, etc.)
+- Relaciones entre `Reservation` → `Room` y `Reservation` → `User`
+
+No necesitas Data Annotations en las entidades; todo se puede hacer en el DbContext.
+
+### Paso 4: Implementar los repositorios
+
+Los archivos `IRoomRepository` y `IReservationRepository` ya están definidos en el dominio.  
+Tienes que crear sus implementaciones en `Coworking.Infrastructure/Repositories/`:
+
+- `RoomRepository` – métodos `GetByIdAsync` y `GetAllAsync`.
+- `ReservationRepository` – métodos `AddAsync` e `IsRoomAvailableAsync`.
+
+Cada repositorio recibirá el `AppDbContext` por inyección de dependencias.
+
+### Paso 5: Eliminar los placeholders
+
+En `Coworking.Infrastructure` hay un `Class1.cs` de relleno; hay que eliminarlo porque ya no sirve.
+
+### Paso 6: Crear la extensión de DI
+
+Crea `Coworking.Infrastructure/DependencyInjection.cs` con un método de extensión `AddInfrastructureServices` que:
+
+- Registre el `AppDbContext` con `UseNpgsql` (leyendo la cadena de conexión de `appsettings.json`).
+- Registre los dos repositorios como `Scoped`.
+
+### Paso 7: Ejecutar la migración inicial
+
+Cuando todos los archivos anteriores estén listos, ejecuta en la terminal:
+

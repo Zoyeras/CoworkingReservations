@@ -1,0 +1,77 @@
+
+Esto generará las tablas en PostgreSQL.
+
+---
+
+## Fase 2 — Capa de Aplicación (Casos de Uso)
+
+Después de tener la base de datos y los repositorios, pasamos a la lógica de negocio.
+
+### Paso 8: Crear DTOs (Data Transfer Objects)
+
+Los DTOs son objetos que transportan datos entre la API y la capa de aplicación sin exponer las entidades.  
+Ejemplos:
+
+- `RoomDto` – Id, Name, Capacity, PricePerHour.
+- `CreateReservationDto` – RoomId, UserId, StartTime, EndTime.
+
+### Paso 9: Definir interfaces de servicio
+
+En la capa de aplicación (`Coworking.Aplication`) crea interfaces como `IRoomService` y `IReservationService`:
+
+- `IRoomService` – `GetAllRoomsAsync()`, `GetRoomByIdAsync(Guid id)`.
+- `IReservationService` – `CreateReservationAsync(CreateReservationDto dto)`, que valide disponibilidad.
+
+### Paso 10: Implementar los servicios
+
+Crea las implementaciones concretas que:
+
+- Usen los repositorios (inyectados por constructor).
+- Apliquen reglas de negocio (por ejemplo, que la reserva no se solape con otra).
+- Devuelvan DTOs o resultados de operación.
+
+### Paso 11: Validación de reglas de negocio
+
+Dentro de los servicios debes asegurar:
+
+- Que la sala exista.
+- Que el usuario exista.
+- Que el intervalo horario sea válido (end > start).
+- Que la sala esté libre (usando `IsRoomAvailableAsync`).
+- Que la capacidad de la sala no se exceda (si manejas múltiples personas por reserva).
+
+### Paso 12: Registrar los servicios en DI
+
+Crea `Coworking.Aplication/DependencyInjection.cs` con un método `AddApplicationServices` que registre las implementaciones de servicios como `Scoped`.
+
+---
+
+## Fase 3 — API (Controladores)
+
+### Paso 13: Limpiar Program.cs
+
+El `Program.cs` actual tiene código de ejemplo (weather). Debes reemplazarlo para que solo configure:
+
+- Servicios (llamando a `AddInfrastructureServices` y `AddApplicationServices`).
+- Swagger/OpenAPI.
+- Middleware de enrutamiento y controladores.
+
+### Paso 14: Crear controladores
+
+Crea `RoomsController` y `ReservationsController` en `Coworking.API/Controllers/`:
+
+- `RoomsController` – GET `api/rooms`, GET `api/rooms/{id}`.
+- `ReservationsController` – POST `api/reservations` que reciba un DTO.
+
+### Paso 15: Configurar DI y middleware
+
+Asegúrate de que `Program.cs` llame a `builder.Services.AddInfrastructureServices(builder.Configuration)` y `builder.Services.AddApplicationServices()`.
+
+### Paso 16: Configurar la cadena de conexión
+
+Ya tienes `appsettings.json` con la cadena apuntando a `localhost`. Ajusta el password según tu PostgreSQL local.
+
+### Paso 17: Probar los endpoints
+
+Ejecuta la API:
+
