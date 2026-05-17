@@ -6,6 +6,8 @@ public class User
     public string Name { get; private set; }
     public string Email { get; private set; }
 
+    private User() { }
+
     public User(Guid id, string name, string email)
     {
         Id = id;

@@ -7,6 +7,8 @@ public class Room
     public int Capacity { get; private set; }
     public decimal PricePerHour { get; private set; }
 
+    private Room() { }
+
     public Room(Guid id, string name, int capacity, decimal pricePerHour)
     {
         Id = id;
